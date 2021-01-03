@@ -17,3 +17,5 @@ const reducer = (state = initialState, action) => {
 };
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware()));
+
+export default store
