@@ -4,8 +4,9 @@ import Product from './Product';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import TabletMacIcon from '@material-ui/icons/TabletMac';
 import LaptopMacIcon from '@material-ui/icons/LaptopMac';
+import { connect } from 'react-redux'
 
-const ProductList = () => {
+const ProductList = ({ addProductToCart }) => {
 
   const productList = [
     {
@@ -25,7 +26,7 @@ const ProductList = () => {
     },
   ]
 
-  const handleClick = (product) => alert(`${product.productName} Click`);
+  const handleClick = (product) => addProductToCart(product);
 
   return (
     <Grid container direction="row" spacing={6}>
@@ -37,4 +38,10 @@ const ProductList = () => {
   );
 };
 
-export default ProductList
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addProductToCart: (item) => dispatch({ type: 'ADD_TO_CART', item})
+  }
+};
+
+export default connect(null ,mapDispatchToProps)(ProductList)
