@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import ProductCart from './ProductCart'
 import { connect } from 'react-redux'
-const Cart = ({cart}) => {
+const Cart = ({cart, removeProductFromCart}) => {
 
-  const handleClick = (product) => alert(`${product.productName} Click`);
+  const handleClick = (product) => removeProductFromCart(product);
 
   return (
     <Paper>
@@ -29,6 +29,12 @@ const mapStateToProps = (state) => ({
   cart: state.cart
 })
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeProductFromCart: (item) => dispatch({ type: 'REMOVE_FROM_CART', item})
+  }
+};
 
-export default connect(mapStateToProps)(Cart)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
 

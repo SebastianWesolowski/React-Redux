@@ -30,6 +30,10 @@ function cart(state = initialCart, action) {
       return [
         ...state, action.item
       ]
+    case "REMOVE_FROM_CART":
+      return [
+        ...state.filter((item) => item !== action.item)
+      ]
     default:
       return state;
   }
