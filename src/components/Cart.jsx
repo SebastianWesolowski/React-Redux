@@ -1,16 +1,8 @@
 import React from 'react';
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import ProductCart from './ProductCart'
-const Cart = () => {
-
-  const cart = [
-    {
-      id:1,
-      productName: 'Phone',
-      productSrc: <PhoneIphoneIcon/>,
-    },
-  ]
+import { connect } from 'react-redux'
+const Cart = ({cart}) => {
 
   const handleClick = (product) => alert(`${product.productName} Click`);
 
@@ -33,6 +25,10 @@ const Cart = () => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  cart: state.cart
+})
 
-export default Cart
+
+export default connect(mapStateToProps)(Cart)
 
