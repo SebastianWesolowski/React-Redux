@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Grid, Typography } from '@material-ui/core';
-const Product = ({ product, onClick }) => {
+const Product = ({ product, isAvailable, onClick }) => {
 
   return (
     <Grid item key={`Product-list-item-${product.id}`}>
@@ -8,7 +8,7 @@ const Product = ({ product, onClick }) => {
         {product.productSrc}
       </Typography>
      <Box padding={"5px"}>{product.productName}</Box>
-     <Button variant={'outlined'} onClick={onClick}>Add {product.productName.toLowerCase()} to cart</Button>
+     <Button disabled={isAvailable} variant={'outlined'} onClick={onClick}>Add {product.productName.toLowerCase()} to cart</Button>
     </Grid>
   );
 };
